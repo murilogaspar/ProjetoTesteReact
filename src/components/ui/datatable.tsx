@@ -98,8 +98,21 @@ export function DataTable<TData, TValue>({
       <a className="text-black text-[24px] font-sans font-bold"> Buscar Defensoria  </a>
       
       <div className="flex justify-end items-center gap-x-4">
-      
-       <Button className="bg-green-900  text-white"> Cadastrar Defensoria </Button>
+       
+       <a href="#formualrio">
+       <Button className="bg-green-900  text-white" onClick={() => {
+        
+         const form = document.getElementById("formulario");
+         form?.scrollIntoView({behavior:"smooth"});
+       }}> 
+        
+        
+        Cadastrar Defensoria 
+        
+        
+        </Button>
+
+        </a>
        
        </div>
        
