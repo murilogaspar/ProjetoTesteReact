@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils'; // opcional, pra facilitar classes condicionais
 
-export default function Sidebar() {
+export default function Menu() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -50,7 +50,7 @@ export default function Sidebar() {
       </nav>
 
 
-      <a>Fulano Detrano</a>
+    
 
 
     </aside>

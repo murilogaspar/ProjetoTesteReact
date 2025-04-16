@@ -1,8 +1,5 @@
 import UsersDatatable from "@/components/datatable/_components/users-datatable";
 
-
-
-
     // pega os dados da API 
     async function fetchUsers(){
 
@@ -16,11 +13,12 @@ import UsersDatatable from "@/components/datatable/_components/users-datatable";
     const users = await fetchUsers();
 
     return(
-      
+
+    
     <>
-
+   
     <UsersDatatable users={users} />
-
+   
     
     </>
     

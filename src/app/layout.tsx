@@ -2,9 +2,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/ui/Sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
 
+import { SidebarProvider } from "@/components/ui/sidebar";
+import Menu from "@/components/ui/menu";
+import { ModeToggle } from "@/components/providers/modo";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 
 const geistSans = Geist({
@@ -24,22 +26,37 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: Readonly <{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem>
       <SidebarProvider>
           <div className="flex">
-            <Sidebar />
-            <main className="flex-1 p-6 bg-gray-50 min-h-screen">{children}</main>
+            <Menu />
+            <main className="flex-1 p-6  min-h-screen">
+
+              <div className="flex justify-end m-2">
+
+                <ModeToggle />
+              
+              </div>
+              
+              {children}
+              
+              </main>
           </div>
         </SidebarProvider>
-        
+        </ThemeProvider>
+      
       </body>
+      
+      
+      
     </html>
   );
 }

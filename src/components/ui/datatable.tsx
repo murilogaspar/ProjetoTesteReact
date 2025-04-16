@@ -27,9 +27,6 @@ import {
 import { Input } from "./input"
 import { Button } from "./button"
 import { PaginationDemo } from "./paginacao"
-import { ModeToggle } from "./modoescuro"
-
-
 
 
 interface DataTableProps<TData, TValue> {
@@ -94,7 +91,7 @@ export function DataTable<TData, TValue>({
 
     <div className="w-400">
 
-      <ModeToggle />
+      
       
       <div className="flex flex-wrap justify-between items-center">
       
@@ -102,7 +99,7 @@ export function DataTable<TData, TValue>({
       
       <div className="flex justify-end items-center gap-x-4">
       
-       <Button className="bg-green-900  "> Cadastrar Defensoria </Button>
+       <Button className="bg-green-900  text-white"> Cadastrar Defensoria </Button>
        
        </div>
        
