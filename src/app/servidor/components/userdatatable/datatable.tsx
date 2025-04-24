@@ -110,18 +110,14 @@ export function DataTableservidor<TData, TValue>({
        
 
       
-      <Link href="/servidor" passHref>
-       
-       <Button className="bg-green-900  text-white" 
+      <Link href="/servidor/formulario" passHref>
         
-       > 
+          <Button className="bg-green-900 text-white">
         
-        Cadastrar Defensoria 
+            Cadastrar Defensoria
         
-        
-        </Button>
-
-        </Link>
+          </Button>
+      </Link>
       
        
        </div>
