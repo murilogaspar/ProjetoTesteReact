@@ -1,4 +1,5 @@
-import UsersDatatable from "@/components/datatable/_components/users-datatable";
+import UsersDatatableinspecao from "./components/userdatatable/user-datatable";
+
 
     // pega os dados da API 
     async function fetchUsers(){
@@ -8,7 +9,7 @@ import UsersDatatable from "@/components/datatable/_components/users-datatable";
     return response.json();
     
     }
-    export default async function InspeçãoCarceraria() {
+    export default async function InspecaoCarceraria() {
 
     const users = await fetchUsers();
 
@@ -17,7 +18,7 @@ import UsersDatatable from "@/components/datatable/_components/users-datatable";
     
     <>
    
-    <UsersDatatable users={users} />
+    <UsersDatatableinspecao users={users} />
    
     
     </>
@@ -27,3 +28,7 @@ import UsersDatatable from "@/components/datatable/_components/users-datatable";
   )
     
   }
+
+
+
+

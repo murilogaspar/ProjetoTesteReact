@@ -1,4 +1,5 @@
-import UsersDatatable from "@/components/datatable/_components/users-datatable";
+/*import UsersDatatable from "./servidor/components/userdatatable/user-datatable";
+
 
     // pega os dados da API 
     async function fetchUsers(){
@@ -27,3 +28,5 @@ import UsersDatatable from "@/components/datatable/_components/users-datatable";
   )
     
   }
+
+  */

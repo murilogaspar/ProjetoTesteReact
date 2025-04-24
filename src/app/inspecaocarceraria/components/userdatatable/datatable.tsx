@@ -34,10 +34,6 @@ import { PaginationDemo } from "@/components/ui/paginacao"
 //import { Link } from "react-router-dom"
 
 
-
-
-
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
@@ -50,7 +46,7 @@ interface DataTableProps<TData, TValue> {
 }
 
 
-export function DataTable<TData, TValue>({
+export function DataTableinspecao<TData, TValue>({
   columns,
 
   data,

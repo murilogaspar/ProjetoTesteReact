@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 
 import { ColumnDef } from "@tanstack/react-table";
 import { User } from "../_interface/user";
@@ -121,3 +121,4 @@ export default function UsersDatatable({users}:Props){
     />
   
 }
+    */

@@ -2,14 +2,18 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { DataTable } from "@/components/ui/datatable";
+
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
-import { User } from "../interface/user";
+
+import { DataTableinspecao } from "./datatable";
+import { Userinspecao } from "../interface/user";
+//import { User } from "../interface/user";
+//import { DataTableinpecao } from "./datatable";
 
 
 //essa é minha tabela onde coloco os campos
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Userinspecao>[] = [
     {
       
         accessorKey:"id", 
@@ -101,13 +105,13 @@ export const columns: ColumnDef<User>[] = [
 
 
 interface Props {
-    users: User [];
+    users: Userinspecao [];
 }
 
 
 // aqui é onde eu insiro os dados , pageSize quantas linhas eu determino na tabela
-export default function UsersDatatable({users}:Props){
-    return  <DataTable 
+export default function UsersDatatableinspecao({users}:Props){
+    return  <DataTableinspecao 
   
      columns={columns} 
   

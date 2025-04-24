@@ -1,208 +1,127 @@
 "use client"
 
-import * as React from "react"
+import { ColumnDef } from "@tanstack/react-table";
 
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  SortingState,
-  getSortedRowModel,
-  useReactTable,
-  getFilteredRowModel,
-  
 
-} from "@tanstack/react-table"
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { PaginationDemo } from "@/components/ui/paginacao"
-//import { Button } from "./button"
-//import { Input } from "./input"
-//import { Button } from "./button"
-//import { PaginationDemo } from "./paginacao"
-//import Link from "next/link"
-//import { Link } from "react-router-dom"
+import { Button } from "@/components/ui/button";
+import { ArrowUpDown } from "lucide-react";
+import { Userassistido} from "../interface/user";
+import { DataTableassistido } from "./datatable";
 
 
 
 
+//essa é minha tabela onde coloco os campos
+export const columns: ColumnDef<Userassistido>[] = [
+    {
+      
+        accessorKey:"id", 
+        //header:"ID",
+
+        cell:({row}) => {
+            return <div>{row.getValue("id")}</div>
+        }
+    },
+
+    {
+        accessorKey:"name",
+        //header:"Name",
+
+        // função para ordenar em ordem crescent    
+        header: ({ column }) => {
+            return (
+              <Button
+                variant="ghost"
+
+                 
+                
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                Name 
+                <ArrowUpDown className="ml-2 h-4 w-4" />
+              </Button>
+            )
+          },
+
+        cell:({row}) => {
+            return <div>{row.getValue("name")}</div>
+        }
+    },
+
+    {
+        accessorKey:"email",
+        //header:"Email",
+
+        // função para ordenar em ordem crescent
+        header: ({ column }) => {
+            return (
+              <Button 
+                variant="ghost"
+                
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+              >
+                E-mail
+                <ArrowUpDown className="ml-2 h-4 w-4 " />
+              </Button>
+            )
+          },
+        
+        
+        cell:({row}) => {
+            return <div>{row.getValue("email")}</div>
+        }
+    },
+
+    {
+        accessorKey:"company.name",
+        id:"companyName",
+        //header:"Company",
+
+        // função para ordenar em ordem crescent
+        header: ({ column }) => {
+          
+            return (
+              <Button
+                variant="ghost"
+
+                
+                
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                
+              >
+                Comany Name
+                <ArrowUpDown className="ml-2 h-4 w-4 " />
+              </Button>
+            )
+          },
+
+        cell: ({ row }) => {
+            return <div>{row.getValue("companyName")}</div>;
+          },
+    },
+ 
+];
 
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
-  //colocando na interface a paginação
-  pageSize?:number;
-  
-  // pra filtrar
-  searchFields?:string[];
-
+interface Props {
+    users: Userassistido [];
 }
 
 
-export function DataTable<TData, TValue>({
-  columns,
-
-  data,
-  // é o limite de paginação
-  pageSize = 10,
-
+// aqui é onde eu insiro os dados , pageSize quantas linhas eu determino na tabela
+export default function UsersDatatableassistido({users}:Props){
+    return  <DataTableassistido 
   
-
-}: DataTableProps<TData, TValue>): React.JSX.Element {
+     columns={columns} 
   
-  //aqui cria a paginação  
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-
+     data={users}  
   
-
-  const table = useReactTable({
-    data,
-    columns,
-       
-    getCoreRowModel: getCoreRowModel(),
-    
-    getPaginationRowModel: getPaginationRowModel(),
-    
-    onSortingChange: setSorting,
-
-    getSortedRowModel: getSortedRowModel(),
+     pageSize={4} 
   
-    getFilteredRowModel: getFilteredRowModel(),
-
+     searchFields={["id", "name", "username", "email", "company.name"]}
+    
+    
+    
+    />
   
-    state:{
-        
-      // faz a ordenação
-        sorting, 
-    },
-
-    // pagina inicial
-    initialState: {
-        pagination:{
-            pageSize,
-        },
-    },
-
-  });
-
-  return (
-
-    <div className="w-400">
-
-      
-      <div className="flex flex-wrap justify-between items-center">
-      
-      <a className="text-black text-[24px] font-sans font-bold"> Buscar Defensoria  </a>
-      
-      <div className="flex justify-end items-center gap-x-4">
-       
-
-      
-       <a href="/servidor">
-       
-       <Button className="bg-green-900  text-white" 
-        
-       > 
-        
-        Cadastrar Defensoria 
-        
-        
-        </Button>
-
-        </a>
-       
-       </div>
-       
-       </div>
-
-
-      <div className="flex items-center justify-between py-4 ">
-      <div className=" w-full ">
-        <Input
-          placeholder="Buscar por qualquer campo..."
-          value={(table.getState().globalFilter as string) ?? ""}
-          onChange={(event) => table.setGlobalFilter(event.target.value)}
-          className="w-full bg-gray-100"
-        />
-      </div>
-     
-      </div>
-   
-   <div className="w-full">
-    
-      <Table className= "bg-gray-200  text-black">
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow  key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                )
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-        
-      </Table>
-
-      </div>
-          
-           
-      
-      <PaginationDemo table={table} />
-
-
-
-
-
-
-
-      
-    </div>
-
-      
-    
-    
-    
-  )
 }

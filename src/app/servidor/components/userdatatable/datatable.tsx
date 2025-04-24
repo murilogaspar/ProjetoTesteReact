@@ -50,7 +50,7 @@ interface DataTableProps<TData, TValue> {
 }
 
 
-export function DataTable<TData, TValue>({
+export function DataTableservidor<TData, TValue>({
   columns,
 
   data,
