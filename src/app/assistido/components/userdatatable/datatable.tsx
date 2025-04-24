@@ -26,6 +26,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { PaginationDemo } from "@/components/ui/paginacao"
+import Link from "next/link"
 //import { Button } from "./button"
 //import { Input } from "./input"
 //import { Button } from "./button"
@@ -109,7 +110,7 @@ export function DataTableassistido<TData, TValue>({
        
 
       
-       <a href="/servidor">
+       <Link href="/servidor" passHref>
        
        <Button className="bg-green-900  text-white" 
         
@@ -120,7 +121,7 @@ export function DataTableassistido<TData, TValue>({
         
         </Button>
 
-        </a>
+        </Link>
        
        </div>
        

@@ -26,6 +26,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { PaginationDemo } from "@/components/ui/paginacao"
+import Link from "next/link"
 //import { Button } from "./button"
 //import { Input } from "./input"
 //import { Button } from "./button"
@@ -108,8 +109,7 @@ export function DataTabledefensoria<TData, TValue>({
       <div className="flex justify-end items-center gap-x-4">
        
 
-      
-       <a href="/servidor">
+      <Link href="/servidor" passHref>
        
        <Button className="bg-green-900  text-white" 
         
@@ -120,7 +120,8 @@ export function DataTabledefensoria<TData, TValue>({
         
         </Button>
 
-        </a>
+        </Link>
+      
        
        </div>
        
