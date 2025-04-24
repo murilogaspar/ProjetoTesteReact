@@ -27,6 +27,12 @@ import {
 import { Input } from "./input"
 import { Button } from "./button"
 import { PaginationDemo } from "./paginacao"
+//import Link from "next/link"
+//import { Link } from "react-router-dom"
+
+
+
+
 
 
 interface DataTableProps<TData, TValue> {
@@ -92,20 +98,25 @@ export function DataTable<TData, TValue>({
     <div className="w-400">
 
       
-      
       <div className="flex flex-wrap justify-between items-center">
       
       <a className="text-black text-[24px] font-sans font-bold"> Buscar Defensoria  </a>
       
       <div className="flex justify-end items-center gap-x-4">
        
-       <a href="#formualrio">
-       <Button className="bg-green-900  text-white" onClick={() => {
+
+      
+       <a href="/formulario">
+       
+       <Button className="bg-green-900  text-white" /*onClick={() => {
         
          const form = document.getElementById("formulario");
          form?.scrollIntoView({behavior:"smooth"});
-       }}> 
+         a href=
+         }}*/
         
+       
+       > 
         
         Cadastrar Defensoria 
         
