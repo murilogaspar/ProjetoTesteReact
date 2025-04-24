@@ -23,10 +23,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { PaginationDemo } from "@/components/ui/paginacao"
 //import { Button } from "./button"
-import { Input } from "./input"
-import { Button } from "./button"
-import { PaginationDemo } from "./paginacao"
+//import { Input } from "./input"
+//import { Button } from "./button"
+//import { PaginationDemo } from "./paginacao"
 //import Link from "next/link"
 //import { Link } from "react-router-dom"
 
