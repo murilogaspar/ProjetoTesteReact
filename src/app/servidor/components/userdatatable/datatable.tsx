@@ -26,7 +26,12 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { PaginationDemo } from "@/components/ui/paginacao"
-import Link from "next/link"
+
+import { useRouter } from "next/navigation"
+
+
+
+//import router from "next/router"
 //import { Button } from "./button"
 //import { Input } from "./input"
 //import { Button } from "./button"
@@ -58,10 +63,12 @@ export function DataTableservidor<TData, TValue>({
   // é o limite de paginação
   pageSize = 10,
 
-  
+ 
 
 }: DataTableProps<TData, TValue>): React.JSX.Element {
+  const router = useRouter() 
   
+
   //aqui cria a paginação  
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -108,17 +115,12 @@ export function DataTableservidor<TData, TValue>({
       
       <div className="flex justify-end items-center gap-x-4">
        
-
-      
-      <Link href="/servidor/formulario" passHref>
-        
-          <Button className="bg-green-900 text-white">
+         <Button className="bg-green-900 text-white" onClick={() => router.push(" /servidor/cadastrar")}>
         
             Cadastrar Defensoria
         
           </Button>
-      </Link>
-      
+           
        
        </div>
        

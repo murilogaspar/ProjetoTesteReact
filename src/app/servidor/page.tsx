@@ -16,7 +16,6 @@ import UsersDatatableservidor from "./components/userdatatable/user-datatable";
 
     return(
 
-    
     <>
    
     <UsersDatatableservidor users={users} />
