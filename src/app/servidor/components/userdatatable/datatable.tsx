@@ -111,7 +111,7 @@ export function DataTableservidor<TData, TValue>({
       
       <div className="flex flex-wrap justify-between items-center">
       
-      <a className="text-black text-[24px] font-sans font-bold"> Buscar Defensoria  </a>
+      <a className=" text-[24px] font-sans font-bold"> Buscar Servidor  </a>
       
       <div className="flex justify-end items-center gap-x-4">
        
@@ -126,28 +126,29 @@ export function DataTableservidor<TData, TValue>({
        
        </div>
 
-
+      
       <div className="flex items-center justify-between py-4 ">
       <div className=" w-full ">
         <Input
           placeholder="Buscar por qualquer campo..."
           value={(table.getState().globalFilter as string) ?? ""}
           onChange={(event) => table.setGlobalFilter(event.target.value)}
-          className="w-full bg-gray-100"
+          className="w-full  "
         />
+        
       </div>
      
       </div>
    
    <div className="w-full">
     
-      <Table className= "bg-gray-200  text-black">
-        <TableHeader>
+      <Table className= "">
+        <TableHeader className="">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow  key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -190,18 +191,8 @@ export function DataTableservidor<TData, TValue>({
            
       
       <PaginationDemo table={table} />
-
-
-
-
-
-
-
       
     </div>
-
-      
-    
     
     
   )

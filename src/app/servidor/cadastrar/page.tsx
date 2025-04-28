@@ -1,10 +1,15 @@
-import FormularioServidor from "./escrever";
+/*import FormularioServidor from "./escrever";
+<FormularioServidor/>
+*/
+
+import { ProfileForm } from "./formservidor";
 
 
 
 
 export default function page(){
     return(
-        <FormularioServidor/>
+        
+        <ProfileForm />
     )
 }
