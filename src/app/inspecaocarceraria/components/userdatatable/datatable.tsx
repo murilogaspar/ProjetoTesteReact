@@ -1,4 +1,4 @@
-/*"use client"
+"use client"
 
 import * as React from "react"
 
@@ -23,10 +23,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { PaginationDemo } from "@/components/ui/paginacao"
+
+import { useRouter } from "next/navigation"
+
+
+
+//import router from "next/router"
 //import { Button } from "./button"
-import { Input } from "./input"
-import { Button } from "./button"
-import { PaginationDemo } from "./paginacao"
+//import { Input } from "./input"
+//import { Button } from "./button"
+//import { PaginationDemo } from "./paginacao"
 //import Link from "next/link"
 //import { Link } from "react-router-dom"
 
@@ -47,17 +56,19 @@ interface DataTableProps<TData, TValue> {
 }
 
 
-export function DataTable<TData, TValue>({
+export function DataTableinspecao<TData, TValue>({
   columns,
 
   data,
   // é o limite de paginação
   pageSize = 10,
 
-  
+ 
 
 }: DataTableProps<TData, TValue>): React.JSX.Element {
+  const router = useRouter() 
   
+
   //aqui cria a paginação  
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -100,51 +111,44 @@ export function DataTable<TData, TValue>({
       
       <div className="flex flex-wrap justify-between items-center">
       
-      <a className="text-black text-[24px] font-sans font-bold"> Buscar Defensoria  </a>
+      <a className=" text-[24px] font-sans font-bold"> Buscar Inspeção Carceraria  </a>
       
       <div className="flex justify-end items-center gap-x-4">
        
+         <Button className="bg-green-900 text-white" onClick={() => router.push(" /inspecaocarceraria/cadastrar")}>
+        
+            Cadastrar Inspeção Carceraria 
+        
+          </Button>
+           
+       
+       </div>
+       
+       </div>
 
       
-       <a href="/servidor">
-       
-       <Button className="bg-green-900  text-white" 
-        
-       > 
-        
-        Cadastrar Defensoria 
-        
-        
-        </Button>
-
-        </a>
-       
-       </div>
-       
-       </div>
-
-
       <div className="flex items-center justify-between py-4 ">
       <div className=" w-full ">
         <Input
           placeholder="Buscar por qualquer campo..."
           value={(table.getState().globalFilter as string) ?? ""}
           onChange={(event) => table.setGlobalFilter(event.target.value)}
-          className="w-full bg-gray-100"
+          className="w-full  "
         />
+        
       </div>
      
       </div>
    
    <div className="w-full">
     
-      <Table className= "bg-gray-200  text-black">
-        <TableHeader>
+      <Table className= "">
+        <TableHeader className="">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow  key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -187,20 +191,9 @@ export function DataTable<TData, TValue>({
            
       
       <PaginationDemo table={table} />
-
-
-
-
-
-
-
       
     </div>
-
-      
-    
     
     
   )
 }
-*/
