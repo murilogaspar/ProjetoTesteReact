@@ -14,6 +14,7 @@ export default function Menu() {
     { name: 'Servidor', href: '/servidor' },
     { name: 'Estabelecimento Penal', href: '/estabelecimentopenal' },
     { name: 'Defensoria', href: '/defensoria' },
+    { name: 'Assistido', href: '/Assistido' },
     { name: 'Inspeção Carcerária', href: '/inspecaocarceraria' },
   ];
 

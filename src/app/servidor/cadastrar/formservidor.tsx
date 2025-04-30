@@ -110,7 +110,7 @@ export function ProfileForm() {
 
               <Button 
                 type="button" 
-                className="w-full lg:w-[8.6rem] lg:h-[2.5rem] font-bold tracking-wide bg-[#487348] text-white hover:bg-[#253f25] md:w-fit"
+                className="w-full lg:w-[8.6rem] lg:h-[2.5rem] font-bold tracking-wide bg-[#487348] text-white hover:bg-[#253f25]  md:w-fit"
                 onClick={() => router.back()}
               >
                 Voltar

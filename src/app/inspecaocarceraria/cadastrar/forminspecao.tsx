@@ -8,18 +8,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Participantes from "./tabelaparticipantes";
+import { Button } from "@/components/ui/button";
+
+
+import { useRouter } from 'next/navigation'
+
+
+
 
 
 export default function SelectionInspecao() {
+  const router = useRouter()
+  
   return (
-    <div className="flex justify-center">
-      <div className="w-full max-w-6xl bg-gray-200 dark:bg-gray-900 p-8 rounded-xl shadow-lg">
-        <h2 className="uppercase font-bold mb-6">Local e Data de Inspeção</h2>
+    
+    
+      <div className="  bg-gray-200 dark:bg-gray-900 p-6 sm:p-8 rounded-xl shadow-lg">
+        <h2 className="uppercase font-bold mb-6 text-lg sm:text-xl">
+          Local e Data de Inspeção
+        </h2>
 
-        <div className="flex flex-col gap-4 justify-center w-400">
+        <div className="flex flex-col gap-4">
           {/* Select 1 - Data */}
           <Select>
-            <SelectTrigger className="w-[900px] h-[50px]">
+            <SelectTrigger className="w-full sm:w-[600px] h-[50px]">
               <SelectValue placeholder="Selecione a Data de Inspeção" />
             </SelectTrigger>
             <SelectContent>
@@ -31,7 +43,7 @@ export default function SelectionInspecao() {
 
           {/* Select 2 - Local */}
           <Select>
-            <SelectTrigger className="w-[900px] h-[50px]">
+            <SelectTrigger className="w-full sm:w-[600px] h-[50px]">
               <SelectValue placeholder="Selecione o Local de Inspeção" />
             </SelectTrigger>
             <SelectContent>
@@ -41,16 +53,39 @@ export default function SelectionInspecao() {
             </SelectContent>
           </Select>
 
-            {/* Botão de upload de arquivo */}
-            <label className="w-[200px] h-[50px] flex flex-col justify-center items-center px-4 py-3 bg-green-700 text-white rounded-lg shadow-md cursor-pointer hover:bg-blue-700">
-            <span className="text-center"> Selecionar Arquivo</span>
+
+           {/* Botão de upload */}
+        <div className="mt-6 flex justify-start">
+          <label className="w-[200px] h-[40px] flex justify-center items-center px-4 py-3 bg-green-700 text-white rounded-lg shadow-md cursor-pointer hover:bg-blue-700">
+            <span>Selecionar Arquivo</span>
             <input type="file" className="hidden" />
-            </label>
+          </label>
         </div>
-        
+
         <Participantes />
+
+         <div className="flex flex-wrap justify-start gap-6">
+            <Button 
+              type="submit" 
+              className="w-full lg:w-[8.6rem] lg:h-[2.5rem] font-bold tracking-wide bg-[#487348] text-white hover:bg-[#253f25] md:w-fit"
+          >
+              Cadastrar
+            </Button>
+
+            <Button 
+                type="button" 
+                className="w-full lg:w-[8.6rem] lg:h-[2.5rem] font-bold tracking-wide bg-[#d1cece] text-black hover:bg-[#253f25] text-green-800 md:w-fit"
+                onClick={() => router.back()}
+              >
+                
+              Voltar
+            </Button>
+          </div>
+
+        </div>
+
         
       </div>
-    </div>
+   
   );
 }
