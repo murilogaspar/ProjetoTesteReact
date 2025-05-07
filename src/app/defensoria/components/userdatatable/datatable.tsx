@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 
 import * as React from "react"
 
@@ -38,9 +38,6 @@ import { useRouter } from "next/navigation"
 //import { PaginationDemo } from "./paginacao"
 //import Link from "next/link"
 //import { Link } from "react-router-dom"
-
-
-
 
 
 
@@ -197,3 +194,4 @@ export function DataTabledefensoria<TData, TValue>({
     
   )
 }
+*/
