@@ -142,7 +142,7 @@ export function DataTableinspecao<TData, TValue>({
    
    <div className="w-full">
     
-      <Table className= "">
+      <Table className="">
         <TableHeader className="">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow  key={headerGroup.id}>

@@ -16,9 +16,10 @@
 export interface Defensoria {
 	id: number;
 	codigo: string;
-	nome: string;
+	name: string;
 	areaDeAtuacao: string;
 	comarca: string;
 	email: string;
 	telefone: string;
+    actions:string;
 }

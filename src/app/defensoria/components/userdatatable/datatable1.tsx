@@ -1,67 +1,183 @@
-"use client";
+"use client"
+import * as React from "react"
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
-import { z } from "zod";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  SortingState,
+  getSortedRowModel,
+  useReactTable,
+  getFilteredRowModel,
+  
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useDefensoriaTableViewModel } from "../use-defensoria-table-viewmodel";
+} from "@tanstack/react-table"
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { PaginationDemo } from "@/components/ui/paginacao"
+
+import { useRouter } from "next/navigation"
 
 
-export const schema = z.object({
-	page: z.coerce.number().default(1),
-	size: z.coerce.number().optional(),
-	sort: z.string().optional(),
-});
 
-export function TableContent() {
-	const searchParams = useSearchParams();
-	const queryParams = schema.parse(Object.fromEntries(searchParams));
-	const page = queryParams.page || 1;
-	const size = queryParams.size ?? 10;
-	const [search, setSearch] = useState<string>();
+//import router from "next/router"
+//import { Button } from "./button"
+//import { Input } from "./input"
+//import { Button } from "./button"
+//import { PaginationDemo } from "./paginacao"
+//import Link from "next/link"
+//import { Link } from "react-router-dom"
 
-	const { defensoriasTable, totalItems, filterFields, isLoading } =
-		useDefensoriaTableViewModel({ limit: size, currentPage: page, search });
 
-	const debouncedSetSearch = useMemo(() => debounce(setSearch, 500), []);
-	const router = useRouter();
 
-	return (
-		<div className="flex flex-col gap-5">
-			<div className="flex justify-between items-center">
-				<h2 className="text-2xl font-bold">
-					Buscar Defensorias ({totalItems || 0})
-				</h2>
-				<Button
-					className="w-60 h-10 font-bold bg-[#487348] hover:bg-[#2c462c] dark:hover:bg-[#2c462c] text-white -tracking-tight"
-					onClick={() => router.push("/defensorias/cadastrar")}
-				>
-					Cadastrar Defensoria 
-				</Button>
-			</div>
 
-			<Input
-				placeholder="Busca por nome defensoria ou comarca ...."
-				className="bg-[#EFEFEF] dark:bg-[#1A1A1A] w-full"
-				onChange={(e) => debouncedSetSearch(e.target.value)}
-			/>
 
-			<DataTable
-				table={defensoriasTable}
-				filterFields={filterFields}
-				footer={true}
-				isLoading={isLoading}
-			/>
-		</div>
-	);
+
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
+  //colocando na interface a paginação
+  pageSize?:number;
+  
+  // pra filtrar
+  searchFields?:string[];
+
 }
 
-export function DefensoriaTableView() {
-	return <TableContent />;
-}
-function debounce(setSearch: Dispatch<SetStateAction<string | undefined>>, arg1: number): any {
-    throw new Error("Function not implemented.");
-}
 
+export function DataTabledefensoria<TData, TValue>({
+  columns,
+
+  data,
+  // é o limite de paginação
+  pageSize = 10,
+
+ 
+
+}: DataTableProps<TData, TValue>): React.JSX.Element {
+  const router = useRouter() 
+  
+
+  //aqui cria a paginação  
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+
+  
+
+  const table = useReactTable({
+    data,
+    columns,
+       
+    getCoreRowModel: getCoreRowModel(),
+    
+    getPaginationRowModel: getPaginationRowModel(),
+    
+    onSortingChange: setSorting,
+
+    getSortedRowModel: getSortedRowModel(),
+  
+    getFilteredRowModel: getFilteredRowModel(),
+
+  
+    state:{
+        
+      // faz a ordenação
+        sorting, 
+    },
+
+    // pagina inicial
+    initialState: {
+        pagination:{
+            pageSize,
+        },
+    },
+
+  });
+
+  return (
+
+    <div className="w-full max-w-screen-xl mx-auto px-4">
+  <div className="flex flex-wrap justify-between items-center gap-4">
+    <a className="text-2xl font-sans font-bold">Buscar Defensoria</a>
+
+    <div className="flex justify-end items-center gap-2">
+      <Button
+        className="bg-green-900 text-white"
+        onClick={() => router.push("/inspecaocarceraria/cadastrar")}
+      >
+        Cadastrar Defensoria
+      </Button>
+    </div>
+  </div>
+
+  <div className="flex flex-col sm:flex-row items-center justify-between py-4 gap-2">
+    <div className="w-full">
+      <Input
+        placeholder="Buscar por qualquer campo..."
+        value={(table.getState().globalFilter as string) ?? ""}
+        onChange={(event) => table.setGlobalFilter(event.target.value)}
+        className="w-full"
+      />
+    </div>
+  </div>
+
+  <div className="w-full overflow-x-auto">
+    <Table>
+      <TableHeader>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <TableRow key={headerGroup.id}>
+            {headerGroup.headers.map((header) => (
+              <TableHead key={header.id}>
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+              </TableHead>
+            ))}
+          </TableRow>
+        ))}
+      </TableHeader>
+      <TableBody>
+        {table.getRowModel().rows?.length ? (
+          table.getRowModel().rows.map((row) => (
+            <TableRow
+              key={row.id}
+              data-state={row.getIsSelected() && "selected"}
+            >
+              {row.getVisibleCells().map((cell) => (
+                <TableCell key={cell.id}>
+                  {flexRender(
+                    cell.column.columnDef.cell,
+                    cell.getContext()
+                  )}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))
+        ) : (
+          <TableRow>
+            <TableCell colSpan={columns.length} className="h-24 text-center">
+              No results.
+            </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  </div>
+
+  <PaginationDemo table={table} />
+</div>
+    
+  )
+}
