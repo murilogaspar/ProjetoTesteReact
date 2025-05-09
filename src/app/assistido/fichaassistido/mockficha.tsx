@@ -8,6 +8,8 @@ export const mockUsers =[
         dataDeNascimento:"05/10/1980",
         
         genero:"Masculino",
+
+        nome:"José Bezerra",
         
         filiacao:"Eduarda Botelho / Luiz Silva",
 
