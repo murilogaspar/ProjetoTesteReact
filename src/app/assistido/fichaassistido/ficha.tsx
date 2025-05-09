@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { mockUsers } from "./mockficha";
-import NavPrincipalAssistido from "../navassistido/navprincipal/page";
+import NavPrincipalAssistido from "../navprincipal/page";
+
 
 export default function Usuarioficha() {
   return (
@@ -43,9 +44,10 @@ export default function Usuarioficha() {
             </div>
 
 
-             {/* Coluna 2: dados penais */}
+             
              <div className="w-1/2 space-y-2">
               <h2 className="text-1xl">Processos de Conhecimento</h2>
+              <h2 className="text-amber-400"> 10 </h2>
             </div>
 
             

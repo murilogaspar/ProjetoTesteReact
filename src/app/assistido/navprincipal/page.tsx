@@ -10,7 +10,7 @@ export default function NavPrincipalAssistido() {
     <div className="flex justify-end items-center gap-x-4">
       <Button
         className="bg-green-900 text-white"
-        onClick={() => router.push("/assistido/navassistido/historico")}
+        onClick={() => router.push("/assistido/navprincipal/historico")}
       >
         Histórico
       </Button>
