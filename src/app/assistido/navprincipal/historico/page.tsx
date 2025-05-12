@@ -1,6 +1,12 @@
+import Historico from "./historico";
+
 export default function HistóricoAssistido(){
-   return( 
+
+
+    <Historico />
+    
    
-        <h2> Olá mundo </h2>
-    )
+    
+   
+    
 }

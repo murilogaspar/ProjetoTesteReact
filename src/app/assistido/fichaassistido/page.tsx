@@ -1,9 +1,11 @@
+
 import Usuarioficha from "./ficha";
 
-export default function FichaPrincipal(){
-    return(
-        
-        <Usuarioficha />
-        
-    )
+export default function FichaPrincipal() {
+  return (
+    <>
+      <Usuarioficha />
+      
+    </>
+  );
 }

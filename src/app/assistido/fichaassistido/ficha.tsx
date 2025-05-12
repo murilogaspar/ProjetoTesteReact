@@ -43,17 +43,10 @@ export default function Usuarioficha() {
               <Button className="bg-green-800">Relatório Penal</Button>
             </div>
 
-
-             
              <div className="w-1/2 space-y-2">
               <h2 className="text-1xl">Processos de Conhecimento</h2>
               <h2 className="text-amber-400"> 10 </h2>
             </div>
-
-            
-
-
-
 
           </div>
           
