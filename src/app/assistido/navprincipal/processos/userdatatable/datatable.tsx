@@ -52,7 +52,7 @@ interface DataTableProps<TData, TValue> {
 }
 
 
-export function DataTableservidor<TData, TValue>({
+export function DataTableassistido<TData, TValue>({
   columns,
 
   data,
