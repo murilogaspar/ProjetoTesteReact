@@ -23,7 +23,7 @@ export default function NavPrincipalAssistido() {
       <div className="flex justify-start items-center gap-x-4">
         <Button
           className="bg-green-900 text-white"
-          onClick={() => router.push("/assistido/navprincipal/historico")}
+          onClick={() => router.push("/assistido/navprincipal/processos")}
         >
           Processos
         </Button>
@@ -59,20 +59,6 @@ export default function NavPrincipalAssistido() {
 
       </div>
 
-      </div>
-
-      <div className="">
-
-        <div className="bg-amber-100 p-7 m-4">
-
-         
-
-         
-
-
-        </div>
-
-        
       </div>
 
     </div>

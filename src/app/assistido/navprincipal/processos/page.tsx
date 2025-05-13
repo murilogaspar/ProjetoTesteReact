@@ -1,5 +1,8 @@
+import FichaPrincipal from "../../fichaassistido/page";
+
+
 export default function ProcessoAssistido(){
     return(
-        <h2> ola </h2>
+        <FichaPrincipal/>
     )
 }
