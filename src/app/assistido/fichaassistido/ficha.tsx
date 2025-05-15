@@ -9,7 +9,7 @@ export default function Usuarioficha() {
       {mockUsers.map((user) => (
         <div
           key={user.id}
-          className="shadow-lg rounded-2xl p-6 border"
+          className="shadow-lg rounded-2xl p-6 border min-w-sm"
         >
           {/* Imagem + dados lado a lado */}
           <div className="flex gap-8 items-start">

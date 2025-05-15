@@ -9,7 +9,7 @@ export default function NavPrincipalAssistido() {
   const router = useRouter();
 
   return (
-    <div className="shadow-lg rounded-2xl p-4 border bg-gray-100">
+    <div className="shadow-lg min-w-sm rounded-2xl p-4 border bg-gray-100">
       <div className=" flex  gap-4 flex-wrap">
       <div className="flex justify-start items-center gap-x-4">
         <Button
@@ -32,7 +32,7 @@ export default function NavPrincipalAssistido() {
       <div className="flex justify-start items-center gap-x-4">
         <Button
           className="bg-green-900 text-white"
-          onClick={() => router.push("/assistido/navprincipal/historico")}
+          onClick={() => router.push("/assistido/navprincipal/visitas")}
         >
           Visitas
         </Button>
@@ -41,7 +41,7 @@ export default function NavPrincipalAssistido() {
       <div className="flex justify-start items-center gap-x-4">
         <Button
           className="bg-green-900 text-white"
-          onClick={() => router.push("/assistido/navprincipal/historico")}
+          onClick={() => router.push("/assistido/navprincipal/dadosdopreso")}
         >
           Dados do Preso
         </Button>

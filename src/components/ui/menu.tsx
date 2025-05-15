@@ -21,18 +21,18 @@ export default function Menu() {
   return (
     <aside
       className={cn(
-        'h-screen bg-gray-900 text-white flex flex-col transition-all duration-300',
-        collapsed ? 'w-16' : 'w-64'
+        'min-h-screen  bg-gray-900 text-white flex flex-col transition-all duration-300',
+        collapsed ? 'w-16' : 'w-64' 
       )}
     >
       <div className="p-4 flex justify-between items-center">
-        {!collapsed && <span className="text-lg font-bold">Menu</span>}
+        {!collapsed && <span className="text-lg font-bold"></span>}
         <button onClick={() => setCollapsed(!collapsed)} className="text-sm">
           {collapsed ? '→' : '←'}
         </button>
       </div>
 
-      <nav className="flex-1 px-2 space-y-2">
+      <nav className="flex-1 px-2 space-y-2 ">
         {Array.isArray(links) && links.map((link, index) => (
           link?.href && link?.name ? (
             <Link

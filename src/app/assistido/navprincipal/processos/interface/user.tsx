@@ -1,6 +1,6 @@
-export interface UsersAssistido{
+export interface Usersprocessos{
 
-    processo:number;
+    processo:string;
 
     comarca:string;
 
