@@ -39,9 +39,6 @@ export default async function Servidor() {
 }
 */
 
-
-
-
     /* pega os dados da API*/ 
 
     async function fetchUsers(){
@@ -58,9 +55,10 @@ export default async function Servidor() {
     return(
 
     <>
-   
+
+    
     <UsersDatatabledefensoria users={users} />
-   
+    
     
     </>
     

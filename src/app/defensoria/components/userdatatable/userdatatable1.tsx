@@ -3,8 +3,10 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Defensoria } from "../interface/user";
 import { DataTabledefensoria } from "./datatable1";
-import { Button } from "@/components/ui/button";
-import router from "next/router";
+
+import ButtonExcluir from "../../buttonexcluir/page";
+import Buttoneditar from "../../buttoneditar/page";
+
 
 
 
@@ -69,12 +71,13 @@ export const columns: ColumnDef<Defensoria>[] =
 			cell: () => (
 			
 				<div className="flex justify-center gap-2">
-				<Button className="bg-[#487348] " onClick={() => router.push("")}>
-				  Editar
-				</Button>
-				<Button className="bg-red-700 " onClick={() => router.push("")}>
-				  Excluir
-				</Button>
+				
+
+				<Buttoneditar/>
+				
+
+				<ButtonExcluir />
+
 			  </div>
 			),
 		},
